@@ -1,0 +1,17 @@
+{
+    "number": "test case 2",
+    "policyStatus": "REGISTERED",
+    "policyObjects": [{
+                        "name" : "house 2",
+                        "policySubObjects" : [{
+                                "name" : "TV",
+                                "sum" : 102.51,
+                                "policyRiskType" : "THEFT"
+                            },{
+                                "name" : "PC",
+                                "sum" : 500.0,
+                                "policyRiskType" : "FIRE"
+                            }]
+                      }
+                     ]
+}
