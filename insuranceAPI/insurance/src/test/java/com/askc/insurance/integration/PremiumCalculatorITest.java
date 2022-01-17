@@ -10,7 +10,6 @@ import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
 import org.springframework.context.annotation.ComponentScan;
@@ -28,6 +27,7 @@ import com.askc.insurance.service.impl.PremiumCalculatorImpl;
 
 /**
  * Integration test for {@link PremiumCalculatorImpl}
+ * 
  * @author svkolev
  *
  */
@@ -43,15 +43,18 @@ public class PremiumCalculatorITest {
 	@Before
 	public void setup() throws Exception {
 		this.mockMvc = MockMvcBuilders.webAppContextSetup(this.webApplicationContext).build();
-		
+
 		ServletContext servletContext = webApplicationContext.getServletContext();
 		Assert.assertNotNull(servletContext);
 		Assert.assertNotNull(webApplicationContext.getBean("policyController"));
 	}
 
 	/**
-	 * Test case for verifying REST calls for specifically test case from implementation requirements
-	 * @throws Exception any exception during execution
+	 * Test case for verifying REST calls for specifically test case from
+	 * implementation requirements
+	 * 
+	 * @throws Exception
+	 *             any exception during execution
 	 */
 	@Test
 	public void testCalculatePremiumPolicy1() throws Exception {
@@ -61,14 +64,17 @@ public class PremiumCalculatorITest {
 								MediaType.APPLICATION_JSON.getSubtype(), Charset.forName("utf8")))
 						.content(PolicyTestHelper.getContentsOfResource("/ITCase1.txt")))
 				.andExpect(MockMvcResultMatchers.status().isOk()).andReturn();
-		
+
 		Double result = Double.valueOf(andReturn.getResponse().getContentAsString());
 		Assertions.assertEquals(2.28, result);
 	}
 
 	/**
-	 * Test case for verifying REST calls for specifically test case from implementation requirements
-	 * @throws Exception any exception during execution
+	 * Test case for verifying REST calls for specifically test case from
+	 * implementation requirements
+	 * 
+	 * @throws Exception
+	 *             any exception during execution
 	 */
 	@Test
 	public void testCalculatePremiumPolicy2() throws Exception {
@@ -78,7 +84,7 @@ public class PremiumCalculatorITest {
 								MediaType.APPLICATION_JSON.getSubtype(), Charset.forName("utf8")))
 						.content(PolicyTestHelper.getContentsOfResource("/ITCase2.txt")))
 				.andExpect(MockMvcResultMatchers.status().isOk()).andReturn();
-		
+
 		Double result = Double.valueOf(andReturn.getResponse().getContentAsString());
 		Assertions.assertEquals(17.13, result);
 	}
