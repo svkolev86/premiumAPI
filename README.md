@@ -13,3 +13,10 @@ Test code
 - com.askc.insurance.helper - Package containing helper class to ease testing
 - com.askc.insurance.integration - Package containing integration tests
 - com.askc.insurance.junit - Package containing unit tests
+
+---------------------------------------------------------------------
+Build tool used - Maven  
+Java version 8 (build 1.8.0_291-b10)  
+Testing jUnit 4  
+Framework supporting dependency injection - Spring 2.6.2  
+Lombok - automatic generation of getters and setters  
